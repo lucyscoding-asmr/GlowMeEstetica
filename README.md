@@ -41,6 +41,6 @@ Immagini tratte da [Pexels](https://www.pexels.com/) (libere per uso gratuito).
 
 ## 🔗 Demo Live (facoltativo)
 
-👉 [Sito:](https://glowmeesteticademo.netlify.app/)
+👉 [Clicca qui per aprire il sito](https://glowmeesteticademo.netlify.app/)
 
 ---
