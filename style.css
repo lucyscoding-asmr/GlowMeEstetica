@@ -1,0 +1,624 @@
+/* ===================================== */
+/* 0. RESET E FONDAMENTI */
+/* ===================================== */
+
+:root {
+    /* Palette Calda, Terrosa, Neutra */
+    --color-primary: #8C6A5A;    /* Marrone/Moka Soft */
+    --color-secondary: #333333;  /* Grigio scuro/Nero soft */
+    --color-background: #ffffff;
+    --color-light-bg: #fdfaf7;   /* Sfondo crema/beige chiaro */
+    --color-cta: #D0A795;        /* Rosa Cipria/Beige Rosato */
+    --color-hover-cta: #BC8E7E;
+    
+    /* Font Eleganti e Leggibili */
+    --font-heading: 'Playfair Display', serif; 
+    --font-body: 'Roboto', sans-serif;
+
+    /* Aggiungo una variabile per le transizioni */
+    --transition-speed: 0.3s ease;
+}
+
+/* Importa Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Scroll fluido tra le sezioni */
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    background-color: var(--color-background);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased; /* Migliora la resa dei font */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 2.8rem); /* Dimensione fluida del titolo */
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.section-subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: -1em auto 3em;
+    font-size: 1.1rem;
+}
+
+/* Animazione Fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ===================================== */
+/* 1. HEADER E NAVIGAZIONE */
+/* ===================================== */
+
+.main-header {
+    background-color: var(--color-background);
+    padding: 15px 0;
+    position: sticky; 
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: padding var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.main-header.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: var(--font-heading);
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 35px; /* Spaziatura tra gli elementi del menu */
+}
+
+.main-nav a {
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Effetto sottolineatura in hover */
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width var(--transition-speed);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.cta-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px; /* Bordi arrotondati per un look più soft */
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background-color var(--transition-speed), transform 0.2s;
+    white-space: nowrap; /* Evita che il testo vada a capo */
+}
+
+.primary-cta {
+    background-color: var(--color-cta); 
+    color: var(--color-background);
+    box-shadow: 0 4px 10px rgba(208, 167, 149, 0.4);
+}
+
+.primary-cta:hover {
+    background-color: var(--color-hover-cta);
+    transform: translateY(-3px);
+    color: var(--color-background); /* Assicura che il colore del testo non cambi */
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+
+/* ===================================== */
+/* 2. SEZIONE HERO */
+/* ===================================== */
+
+.hero-section {
+    background: var(--color-light-bg); 
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 90vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+}
+
+.hero-content .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 2.5em;
+    font-weight: 300;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.secondary-cta {
+    background-color: var(--color-primary); 
+    color: var(--color-background);
+    padding: 15px 35px;
+    font-size: 1.1em;
+}
+
+.secondary-cta:hover {
+    background-color: var(--color-hover-cta);
+    transform: translateY(-3px);
+    color: var(--color-background);
+}
+
+
+/* ===================================== */
+/* 3. PUNTI DI FORZA (USP / METODO) */
+/* ===================================== */
+
+.usp-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 3em;
+}
+
+.usp-item i {
+    font-size: 2.8em;
+    color: var(--color-cta); /* Uso il colore CTA per le icone, attira di più */
+    margin-bottom: 20px;
+}
+
+.usp-item h3 {
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+
+/* ===================================== */
+/* 4. SERVIZI */
+/* ===================================== */
+
+.services-section {
+    background-color: var(--color-light-bg);
+    padding: 100px 0;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.service-card {
+    background-color: var(--color-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    height: 220px;
+    background-color: #e6e6e6; 
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card h3 {
+    margin-top: 1.5em;
+    padding: 0 20px;
+    font-size: 1.6em;
+}
+
+.service-card p {
+    padding: 0 25px;
+    margin-bottom: 1.5em;
+    flex-grow: 1; /* Fa in modo che il testo occupi lo spazio, allineando i link in basso */
+}
+
+.learn-more {
+    color: var(--color-primary);
+    font-weight: 700;
+    display: inline-block;
+    padding: 1em;
+}
+.learn-more:hover {
+    color: var(--color-hover-cta);
+}
+
+/* ===================================== */
+/* 5. NUOVA SEZIONE: RISULTATI (PRIMA/DOPO) */
+/* ===================================== */
+
+.results-gallery-section {
+    padding: 100px 0;
+    background-color: var(--color-background);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.result-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform var(--transition-speed);
+}
+.result-card:hover {
+    transform: scale(1.03);
+}
+
+.result-image-wrapper {
+    height: 350px;
+    background-color: #ccc; /* Placeholder se l'immagine non carica */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    color: #666;
+
+    /* Controllo immagine */
+    background-size: cover;        /* Copre tutto il contenitore, mantiene proporzioni */
+    background-position: center;   /* Centra il soggetto dell’immagine */
+    background-repeat: no-repeat;  /* Evita ripetizioni */
+}
+
+.result-info {
+    padding: 20px;
+    background: var(--color-light-bg);
+}
+
+.result-info h4 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5em;
+    color: var(--color-primary);
+}
+
+
+/* ===================================== */
+/* 6. TESTIMONIANZE */
+/* ===================================== */
+
+.testimonials-section {
+    padding: 100px 0;
+    background-color: var(--color-light-bg);
+    overflow: hidden;
+}
+
+.testimonial-slider {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    min-height: 200px; 
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-slide {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    padding: 40px;
+    border-left: 5px solid var(--color-cta); 
+    background-color: var(--color-background);
+    border-radius: 0 5px 5px 0;
+}
+
+.testimonial-slide.active {
+    display: flex;
+}
+
+.testimonial-slide p {
+    font-size: 1.3em;
+    font-style: italic;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.testimonial-slide footer {
+    font-weight: 700;
+    color: var(--color-primary);
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.slider-controls {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.slider-controls button {
+    background: none;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.slider-controls button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+}
+
+
+/* ===================================== */
+/* 7. CTA FINALE E FORM */
+/* ===================================== */
+
+.booking-cta-section {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.booking-cta-section h2,
+.booking-cta-section p {
+    color: var(--color-background);
+}
+
+.booking-cta-section p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bottone WhatsApp integrato nella sezione contatti */
+.booking-cta-section .primary-cta {
+    display: inline-block;           /* assicura che il bottone non sia a tutta larghezza */
+    font-size: 1.2rem;
+    padding: 15px 35px;              /* riduci leggermente il padding */
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(208, 167, 149, 0.4);
+    transition: background-color var(--transition-speed), transform 0.3s, box-shadow 0.3s;
+    margin: 2rem auto 0 auto;        /* centra il bottone */
+    text-align: center;
+    max-width: fit-content;          /* larghezza minima necessaria al testo + padding */
+}
+
+.booking-cta-section .primary-cta:hover {
+    background-color: var(--color-hover-cta); /* rosa cipria più scuro */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(208, 167, 149, 0.4);
+    color: var(--color-background);
+}
+
+.booking-cta-section p.privacy-notice {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.booking-cta-section .primary-cta {
+    font-size: 1.2em;
+    width: 100%;
+}
+
+.privacy-notice {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: -10px;
+}
+
+
+/* ===================================== */
+/* 8. FOOTER */
+/* ===================================== */
+
+.main-footer {
+    background-color: var(--color-secondary);
+    color: #cccccc;
+    padding: 60px 0 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3, .footer-col h4 {
+    color: var(--color-background);
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+
+.footer-col p, .footer-col li {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+.footer-col ul {
+    list-style: none;
+}
+.footer-col a {
+    color: #cccccc;
+}
+
+.footer-col a:hover {
+    color: var(--color-cta);
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: #cccccc;
+    font-size: 1.5em;
+    margin-right: 20px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #444;
+    font-size: 0.9em;
+}
+
+
+/* ===================================== */
+/* 9. MEDIA QUERIES (RESPONSIVE) */
+/* ===================================== */
+
+@media (max-width: 992px) {
+    .main-nav {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+        z-index: 1002;
+    }
+    .main-header .primary-cta {
+        display: none;
+    }
+    
+    .hero-section {
+        min-height: 70vh;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-col.about-col {
+        grid-column: 1 / -1; /* Occupa tutta la larghezza */
+    }
+}
+
+@media (max-width: 768px) {
+    .usp-grid, .services-grid, .results-grid, .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .usp-section, .services-section, .testimonials-section, .booking-cta-section, .results-gallery-section {
+        padding: 80px 0;
+    }
+
+    .testimonial-slide {
+        padding: 25px;
+    }
+    .testimonial-slide p {
+        font-size: 1.1em;
+    }
+}
+
+/* Stili per il menu mobile attivo */
+.main-nav.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Usa fixed per coprire tutta la pagina */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(253, 250, 247, 0.98);
+    backdrop-filter: blur(5px);
+    z-index: 1001;
+}
+.main-nav.active ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+.main-nav.active ul li a {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+}
