@@ -31,7 +31,7 @@ L’obiettivo del progetto è unire estetica e chiarezza: illustrare servizi, me
 ---
 ## 🖋️ Crediti
 
-**Autrice:** [Lucia Buondonno](https://github.com/lucyscoding-asmr)  
+**Autrice:** [Lucy Buondonno](https://github.com/lucyscoding-asmr)  
 **Anno:** 2025  
 **Scopo:** Demo portfolio — sito estetico dimostrativo, non commerciale.  
 
